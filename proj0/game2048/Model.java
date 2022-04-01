@@ -133,14 +133,26 @@ public class Model extends Observable {
         return maxTileExists(b) || !atLeastOneMoveExists(b);
     }
 
+
+    //  类实例化后才能调用里面的方法比如 Board b
+    //  如果木板上至少有一个为空间为空,则返回true;空的空间存null;
     /** Returns true if at least one space on the Board is empty.
      *  Empty spaces are stored as null.
      * */
     public static boolean emptySpaceExists(Board b) {
+        for (int col = 0;col < b.size();col++) {
+            for (int row = 0;row < b.size();row++) {
+                if (b.tile(col,row) == null) {
+                    return true;
+                }
+            }
+        }
         // TODO: Fill in this function.
         return false;
     }
 
+
+    // 有效值要求排除无效的(null)情况,再进行判断.
     /**
      * Returns true if any tile is equal to the maximum valid value.
      * Maximum valid value is given by MAX_PIECE. Note that
@@ -148,17 +160,44 @@ public class Model extends Observable {
      */
     public static boolean maxTileExists(Board b) {
         // TODO: Fill in this function.
+        for (int col = 0;col < b.size();col++) {
+            for (int row = 0;row < b.size();row++) {
+                Tile t = b.tile(col,row);
+                if (t != null) {
+                    if (t.value() == MAX_PIECE) {
+                        return true;
+                    }
+                }
+            }
+        }
         return false;
     }
 
+
+    // 差最后一步思路(表示某个坐标上下左右值不能超出0和b.size()即0<=col+k<b.size())
     /**
      * Returns true if there are any valid moves on the board.
      * There are two ways that there can be valid moves:
-     * 1. There is at least one empty space on the board.
-     * 2. There are two adjacent tiles with the same value.
+     * 1. There is at least one empty space on the board.  木板上至少有一个空的空间.
+     * 2. There are two adjacent tiles with the same value.    相邻砖具有相同的值.
      */
     public static boolean atLeastOneMoveExists(Board b) {
         // TODO: Fill in this function.
+        if (emptySpaceExists(b)) return true;
+        for (int col = 0;col < b.size();col++) {
+            for (int row = 0;row < b.size();row++) {
+                for (int k = -1;k <= 1;k++) {
+                    if (k != 0 && 0 <= col+k && col+k < b.size() && 0 <= row+k && row+k <b.size()) {
+                        if (b.tile(col,row).value() == b.tile(col+k,row).value()) {
+                            return true;
+                        }
+                        if (b.tile(col,row).value() == b.tile(col,row+k).value()) {
+                            return true;
+                        }
+                    }
+                }
+            }
+        }
         return false;
     }
 

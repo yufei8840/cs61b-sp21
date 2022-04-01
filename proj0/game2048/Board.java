@@ -46,6 +46,7 @@ public class Board implements Iterable<Tile> {
         }
     }
 
+    //    返回木块的数量
     /** Returns the size of the board. */
     public int size() {
         return values.length;
@@ -56,12 +57,15 @@ public class Board implements Iterable<Tile> {
         viewPerspective = s;
     }
 
+
+    // 返回当前坐标的值
     /** Return the current Tile at (COL, ROW), when sitting with the board
      *  oriented so that SIDE is at the top (farthest) from you. */
     private Tile vtile(int col, int row, Side side) {
         return values[side.col(col, row, size())][side.row(col, row, size())];
     }
 
+    //  返回当前砖的坐标(col,row),如果没有则返回空
     /** Return the current Tile at (COL, ROW), where 0 <= ROW < size(),
      *  0 <= COL < size(). Returns null if there is no tile there. */
     public Tile tile(int col, int row) {
