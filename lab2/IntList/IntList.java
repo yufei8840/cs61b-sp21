@@ -1,5 +1,7 @@
 package IntList;
 
+import jh61b.junit.In;
+
 public class IntList {
     public int first;
     public IntList rest;
@@ -57,11 +59,27 @@ public class IntList {
      * You can pass in any number of arguments to IntList.of and it will work:
      * IntList mySmallerList = IntList.of(1, 4, 9);
      */
+//    public static IntList of(int ...argList) {
+//        if (argList.length == 0)
+//            return null;
+//        int[] restList = new int[argList.length - 1];
+//        System.arraycopy(argList, 1, restList, 0, argList.length - 1);
+//        return new IntList(argList[0], IntList.of(restList));
+//    }
     public static IntList of(int ...argList) {
-        if (argList.length == 0)
-            return null;
-        int[] restList = new int[argList.length - 1];
-        System.arraycopy(argList, 1, restList, 0, argList.length - 1);
-        return new IntList(argList[0], IntList.of(restList));
+        if (argList == null) {
+            IntList L = new IntList(63,null);
+            return L;
+        }
+        IntList L = null;
+        for (int i = 0;i < argList.length;i++) {
+            int x = argList.length - i - 1;
+            if (L == null) {
+                L = new IntList(argList[x],null);
+            }else {
+                L = new IntList(argList[x],L);
+            }
+        }
+        return L;
     }
 }

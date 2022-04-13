@@ -5,6 +5,8 @@ package Arithmetic;
  * */
 public class Arithmetic {
 
+
+
     /** Computes product of two ints.
      * @param a Value 1
      * @param b Value 2
@@ -20,6 +22,7 @@ public class Arithmetic {
      * @return Sum of a and b
      * */
     public static int sum(int a, int b) {
-        return a * b;
+        return a + b;
     }
 }
+
