@@ -41,6 +41,9 @@ public class TestBuggyAList {
     }
 
 
+    /**
+     * 测试
+     */
     @Test
     public void randomizedTest() {
         AListNoResizing<Integer> AL = new AListNoResizing<>();
