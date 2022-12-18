@@ -37,7 +37,6 @@ public class TimeAList {
             N.addLast(i);
         }
         printTimingTable(N,times,N);
-        
     }
 
 //    public static void timeAListConstruction() {
