@@ -1,20 +1,5 @@
 package IntList;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 public class IntListExercises {
 
     /**

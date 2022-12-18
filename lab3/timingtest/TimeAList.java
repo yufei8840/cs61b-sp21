@@ -1,5 +1,7 @@
 package timingtest;
+import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Stopwatch;
+import org.checkerframework.checker.units.qual.A;
 
 /**
  * Created by hug.
@@ -23,26 +25,41 @@ public class TimeAList {
     }
 
     public static void timeAListConstruction() {
-        // TODO: YOUR CODE HERE
-        AList<Integer> Ns = new AList<>();
-        AList<Double> times = new AList<>();
-        AList<Integer> opCounts = new AList<>();
-        Stopwatch sw = new Stopwatch();
-        for (int i = 1000;i <= 128000;i *= 2) {
-            AList<Integer> te = new AList<>();
-            for (int j = 0;j < i;j++) {
-                te.addLast(j);
+        AList<Double> times = new AList<Double>();
+        AList<Integer> N = new AList<Integer>();
+        for (int i = 1000; i <= 256000; i *= 2) {
+            AList<Integer> n = new AList<Integer>();
+            Stopwatch sw = new Stopwatch();
+            for (int j = 0; j < i; j++) {
+                n.addLast(j);
             }
-            double timeInSeconds = sw.elapsedTime();
-            times.addLast(timeInSeconds);
-            Ns.addLast(i);
-            opCounts.addLast(i);
+            times.addLast(sw.elapsedTime());
+            N.addLast(i);
         }
-
-
-        printTimingTable(Ns,times,opCounts);
-
+        printTimingTable(N,times,N);
     }
+
+//    public static void timeAListConstruction() {
+//        // TODO: YOUR CODE HERE
+//        AList<Integer> Ns = new AList<>();
+//        AList<Double> times = new AList<>();
+//        AList<Integer> opCounts = new AList<>();
+//        Stopwatch sw = new Stopwatch();
+//        for (int i = 1000; i <= 256000; i *= 2) {
+//            AList<Integer> te = new AList<>();
+//            for (int j = 0;j < i;j++) {
+//                te.addLast(j);
+//            }
+//            double timeInSeconds = sw.elapsedTime();
+//            times.addLast(timeInSeconds);
+//            Ns.addLast(i);
+//            opCounts.addLast(i);
+//        }
+//
+//
+//        printTimingTable(Ns,times,opCounts);
+//
+//    }
 }
 
 
