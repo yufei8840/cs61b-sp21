@@ -24,7 +24,23 @@ public class TimeAList {
         timeAListConstruction();
     }
 
+//    public static void timeAListConstruction() {
+//        AList<Double> times = new AList<Double>();
+//        AList<Integer> N = new AList<Integer>();
+//        for (int i = 1000; i <= 256000; i *= 2) {
+//            AList<Integer> n = new AList<Integer>();
+//            Stopwatch sw = new Stopwatch();
+//            for (int j = 0; j < i; j++) {
+//                n.addLast(j);
+//            }
+//            times.addLast(sw.elapsedTime());
+//            N.addLast(i);
+//        }
+//        printTimingTable(N,times,N);
+//    }
+
     public static void timeAListConstruction() {
+        // TODO: YOUR CODE HERE
         AList<Double> times = new AList<Double>();
         AList<Integer> N = new AList<Integer>();
         for (int i = 1000; i <= 256000; i *= 2) {
@@ -37,10 +53,8 @@ public class TimeAList {
             N.addLast(i);
         }
         printTimingTable(N,times,N);
-    }
 
-//    public static void timeAListConstruction() {
-//        // TODO: YOUR CODE HERE
+
 //        AList<Integer> Ns = new AList<>();
 //        AList<Double> times = new AList<>();
 //        AList<Integer> opCounts = new AList<>();
@@ -59,7 +73,7 @@ public class TimeAList {
 //
 //        printTimingTable(Ns,times,opCounts);
 //
-//    }
+    }
 }
 
 
