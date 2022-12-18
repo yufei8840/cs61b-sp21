@@ -39,6 +39,7 @@ public class TimeAList {
         printTimingTable(N,times,N);
     }
 
+
 //    public static void timeAListConstruction() {
 //        // TODO: YOUR CODE HERE
 //        AList<Integer> Ns = new AList<>();
