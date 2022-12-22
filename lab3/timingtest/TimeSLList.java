@@ -1,4 +1,6 @@
 package timingtest;
+import afu.org.checkerframework.checker.oigj.qual.O;
+import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Stopwatch;
 
 
@@ -22,29 +24,57 @@ public class TimeSLList {
         timeGetLast();
     }
 
-    public static void timeGetLast() {
-        // TODO: YOUR CODE HERE
-        AList<Integer> Ns = new AList<>();
-        AList<Double> times = new AList<>();
-        AList<Integer> opCounts = new AList<>();
-        for (int i = 1000;i <= 128000;i *= 2) {
-            SLList<Integer> sll = new SLList<>();
-            for (int h = 0;h < i;h++) {
-                sll.addLast(h);
-            }
 
-            Stopwatch sw = new Stopwatch();
-            for (int j = 0;j < 10000;j++) {
-                int last = sll.getLast();
+    public static void timeGetLast() {
+        AList<Integer> N = new AList<>();
+        AList<Double> Times = new AList<>();
+        AList<Integer> Ops = new AList<>();
+        for (int i = 1000; i <= 128000; i *= 2) {
+            SLList<Integer> tmp = new SLList<>();
+            for (int j = 0; j < i; j++) {
+                tmp.addLast(j);
             }
-            double timeInSeconds = sw.elapsedTime();
-            times.addLast(timeInSeconds);
-            Ns.addLast(i);
-            opCounts.addLast(10000);
+            N.addLast(i);
+            Ops.addLast(10000);
+            Stopwatch sw = new Stopwatch();
+            for (int j = 0; j < Ops.getLast(); j++) {
+                tmp.getLast();
+            }
+            Times.addLast(sw.elapsedTime());
         }
 
-        printTimingTable(Ns,times,opCounts);
+        printTimingTable(N, Times, Ops);
+
 
     }
+
+
+
+
+
+//    public static void timeGetLast() {
+//        // TODO: YOUR CODE HERE
+//        AList<Integer> Ns = new AList<>();
+//        AList<Double> times = new AList<>();
+//        AList<Integer> opCounts = new AList<>();
+//        for (int i = 1000;i <= 128000;i *= 2) {
+//            SLList<Integer> sll = new SLList<>();
+//            for (int h = 0;h < i;h++) {
+//                sll.addLast(h);
+//            }
+//
+//            Stopwatch sw = new Stopwatch();
+//            for (int j = 0;j < 10000;j++) {
+//                int last = sll.getLast();
+//            }
+//            double timeInSeconds = sw.elapsedTime();
+//            times.addLast(timeInSeconds);
+//            Ns.addLast(i);
+//            opCounts.addLast(10000);
+//        }
+//
+//        printTimingTable(Ns,times,opCounts);
+//
+//    }
 
 }
